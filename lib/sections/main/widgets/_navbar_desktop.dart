@@ -41,7 +41,7 @@ class _NavbarDesktop extends StatelessWidget {
               child: Padding(
                 padding: Space.all(1.25, 0.45),
                 child: Text(
-                  'RESUME',
+                  'CV',
                   style: AppText.l1b,
                 ),
               ),

@@ -26,7 +26,7 @@ class _MobileDrawer extends StatelessWidget {
                   color: AppTheme.c!.primary!,
                 ),
                 title: const Text(
-                  "Dark Mode",
+                  "Mode Sombre",
                 ),
                 trailing: Switch(
                   inactiveTrackColor: Colors.grey,
@@ -75,7 +75,7 @@ class _MobileDrawer extends StatelessWidget {
                       color: Colors.red,
                     ),
                     title: Text(
-                      'RESUME',
+                      'CV',
                     ),
                   ),
                 ),

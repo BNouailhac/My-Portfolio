@@ -2,7 +2,7 @@ import 'package:folio/configs/configs.dart';
 import 'package:folio/utils/about_utils.dart';
 import 'package:folio/utils/utils.dart';
 import 'package:folio/utils/work_utils.dart';
-
+import 'package:folio/responsive/responsive.dart';
 import 'package:folio/widget/custom_text_heading.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:flutter/material.dart';
@@ -26,12 +26,7 @@ class AboutTab extends StatelessWidget {
         children: [
           const Center(
             child: CustomSectionHeading(
-              text: '\nAbout Me',
-            ),
-          ),
-          const Center(
-            child: CustomSectionSubHeading(
-              text: 'Get to know me :)',
+              text: '\nÀ propos de moi',
             ),
           ),
           Space.y1!,
@@ -43,7 +38,7 @@ class AboutTab extends StatelessWidget {
             height: height * 0.03,
           ),
           Text(
-            "Who am I?",
+            "Baptiste Nouailhac",
             style: AppText.b2!.copyWith(
               color: AppTheme.c!.primary,
             ),
@@ -66,22 +61,77 @@ class AboutTab extends StatelessWidget {
               fontFamily: 'Montserrat',
             ),
           ),
-          Space.y!,
+          Center(
+            child: SizedBox(
+              height: AppDimensions.normalize(25),
+              width: AppDimensions.normalize(60),
+              child: Row(
+                children: StaticUtils.universityicon
+                    .asMap()
+                    .entries
+                    .map(
+                      (e) => Padding(
+                        padding: Responsive.isMobile(context)
+                            ? Space.all(0.2, 0)
+                            : Space.h!,
+                        child: IconButton(
+                          highlightColor: Colors.white54,
+                          splashRadius: AppDimensions.normalize(12),
+                          icon: Image.network(
+                            e.value,
+                            height: Responsive.isMobile(context)
+                                ? AppDimensions.normalize(10)
+                                : null,
+                          ),
+                          iconSize: Responsive.isMobile(context)
+                              ? AppDimensions.normalize(16)
+                              : AppDimensions.normalize(16),
+                          onPressed: () => openURL(
+                            StaticUtils.universityiconlinks[e.key],
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ),
           Divider(
             color: Colors.grey[800],
             thickness: AppDimensions.normalize(0.5),
           ),
           Space.y!,
           Text(
-            'Technologies I have worked with:',
+            'Technologies que je maitrise:',
             style: AppText.l1!.copyWith(
               color: AppTheme.c!.primary,
             ),
           ),
           Row(
-            children: kTools
+            children: StaticUtils.ThecIcon.asMap()
+                .entries
                 .map(
-                  (e) => ToolTechWidget(techName: e),
+                  (e) => Padding(
+                    padding: Responsive.isMobile(context)
+                        ? Space.all(2, 0)
+                        : Space.h!,
+                    child: IconButton(
+                      highlightColor: Colors.white54,
+                      splashRadius: AppDimensions.normalize(8),
+                      icon: Image.network(
+                        e.value,
+                        height: Responsive.isMobile(context)
+                            ? AppDimensions.normalize(10)
+                            : null,
+                      ),
+                      iconSize: Responsive.isMobile(context)
+                          ? AppDimensions.normalize(10)
+                          : AppDimensions.normalize(15),
+                      onPressed: () => openURL(
+                        StaticUtils.ThecIconLinks[e.key],
+                      ),
+                    ),
+                  ),
                 )
                 .toList(),
           ),
@@ -90,82 +140,54 @@ class AboutTab extends StatelessWidget {
             color: Colors.grey[800],
             thickness: AppDimensions.normalize(0.5),
           ),
+          Text(
+            'J\'ai eu la chance de travailler avec:',
+            style: AppText.l1!.copyWith(
+              color: AppTheme.c!.primary,
+            ),
+          ),
           Space.y!,
           Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  AboutMeData(
-                    data: "Name",
-                    information: "Muhammad Hamza",
-                  ),
-                  AboutMeData(
-                    data: "Age",
-                    information: "24",
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: width > 710 ? width * 0.2 : width * 0.05,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  AboutMeData(
-                    data: "Email",
-                    information: "hamza.6.shakeel@gmail.com",
-                  ),
-                  AboutMeData(
-                    data: "From",
-                    information: "Attock, PK",
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Space.y1!,
-          Row(
-            children: [
-              SizedBox(
-                height: AppDimensions.normalize(13),
-                width: AppDimensions.normalize(40),
-                child: OutlinedButton(
-                  onPressed: () => html.window.open(StaticUtils.resume, 'pdf'),
-                  child: const Text(
-                    "Resume",
-                  ),
-                ),
-              ),
-              Space.x!,
-              Container(
-                width: width * 0.05,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Colors.grey[900]!,
-                      width: 2.0,
+            children: StaticUtils.CompanyIcon.asMap()
+                .entries
+                .map(
+                  (e) => Padding(
+                    padding: Responsive.isMobile(context)
+                        ? Space.all(0.5, 0)
+                        : Space.h!,
+                    child: IconButton(
+                      highlightColor: Colors.white54,
+                      splashRadius: AppDimensions.normalize(8),
+                      icon: Image.network(
+                        e.value,
+                        height: Responsive.isMobile(context)
+                            ? AppDimensions.normalize(10)
+                            : null,
+                      ),
+                      iconSize: Responsive.isMobile(context)
+                          ? AppDimensions.normalize(9)
+                          : AppDimensions.normalize(14),
+                      onPressed: () => openURL(
+                        StaticUtils.CompanyIconLinks[e.key],
+                      ),
                     ),
                   ),
+                )
+                .toList(),
+          ),
+          Space.y1!,
+          Center(
+            child: SizedBox(
+              height: AppDimensions.normalize(25),
+              width: AppDimensions.normalize(60),
+              child: OutlinedButton(
+                onPressed: () => html.window.open(StaticUtils.resume, 'pdf'),
+                child: const Text(
+                  "Mon CV",
                 ),
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                    children: WorkUtils.logos
-                        .asMap()
-                        .entries
-                        .map(
-                          (e) => CommunityIconBtn(
-                            icon: e.value,
-                            link: WorkUtils.communityLinks[e.key],
-                            height: WorkUtils.communityLogoHeight[e.key],
-                          ),
-                        )
-                        .toList()),
-              ),
-            ],
-          )
+            ),
+          ),
         ],
       ),
     );

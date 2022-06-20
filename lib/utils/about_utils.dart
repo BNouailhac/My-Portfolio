@@ -1,7 +1,7 @@
 class AboutUtils {
   static const String aboutMeHeadline =
-      'I\'m Muhammad Hamza, a Flutter developer, Technical blog writer and UI designer.';
+      'Je suis en 5ème année du Programme Grandes Écoles filière anglaise d\'Epitech.';
 
   static const String aboutMeDetail =
-      'I\'m a Fresh Graduate with Computer Science as Majors from COMSATS University, Islamabad. I have been developing mobile apps for over 2 years now. I have worked in teams for various startups and helped them in launching their prototypes and got valuable learning experience. Been a former  Google Developer Student Clubs (DSC) lead and also CEO/Co-Founder Flutter Islamabad, Pakistan. Currently working as Associate Software Engineer at Sastaticket.pk';
+      'Les projets sur lesquels j\'ai eu l\'occasion de travailler m\'ont permis d\'acquérir rigueur, organisation, une analyse rapide et synthétique de l\'information, ainsi qu’une expérience en développement full stack, notamment en Flutter et Javascript.\nMes années d\'études mon donné la chance d\'apprendre auprès de :';
 }

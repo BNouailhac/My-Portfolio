@@ -21,11 +21,9 @@ class _PortfolioDesktopState extends State<PortfolioDesktop> {
       child: Column(
         children: [
           const CustomSectionHeading(
-            text: "\nPortfolio",
+            text: "\nMon PortFolio",
           ),
-          const CustomSectionSubHeading(
-            text: "Here are few samples of my previous work :)\n\n",
-          ),
+          Space.y2!,
           Wrap(
             alignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
@@ -46,12 +44,12 @@ class _PortfolioDesktopState extends State<PortfolioDesktop> {
           ),
           Space.y2!,
           SizedBox(
-            height: AppDimensions.normalize(14),
-            width: AppDimensions.normalize(50),
+            height: AppDimensions.normalize(20),
+            width: AppDimensions.normalize(70),
             child: OutlinedButton(
               onPressed: () => openURL(StaticUtils.gitHub),
               child: Text(
-                'See More',
+                'Voir mon travail',
                 style: AppText.l1b,
               ),
             ),

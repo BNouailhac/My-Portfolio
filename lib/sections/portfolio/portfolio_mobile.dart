@@ -16,10 +16,7 @@ class PortfolioMobileTab extends StatelessWidget {
     return Column(
       children: [
         const CustomSectionHeading(
-          text: "\nPortfolio",
-        ),
-        const CustomSectionSubHeading(
-          text: "Here are few samples of my previous work :)\n\n",
+          text: "\nMon PortFolio",
         ),
         CarouselSlider.builder(
           itemCount: ProjectUtils.titles.length,
@@ -44,12 +41,12 @@ class PortfolioMobileTab extends StatelessWidget {
         ),
         Space.y!,
         SizedBox(
-          height: AppDimensions.normalize(14),
-          width: AppDimensions.normalize(50),
+          height: AppDimensions.normalize(18),
+          width: AppDimensions.normalize(65),
           child: OutlinedButton(
             onPressed: () => openURL(StaticUtils.gitHub),
             child: Text(
-              'See More',
+              'Voir mon travail',
               style: AppText.l1b,
             ),
           ),

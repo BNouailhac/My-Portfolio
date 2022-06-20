@@ -9,7 +9,7 @@ import 'package:folio/widget/about_me_data.dart';
 import 'package:folio/widget/community_button.dart';
 import 'package:folio/widget/custom_text_heading.dart';
 import 'package:folio/widget/tech_widget.dart';
-
+import 'package:folio/responsive/responsive.dart';
 import 'package:universal_html/html.dart' as html;
 
 class AboutDesktop extends StatelessWidget {
@@ -25,10 +25,7 @@ class AboutDesktop extends StatelessWidget {
       child: Column(
         children: [
           const CustomSectionHeading(
-            text: '\nAbout Me',
-          ),
-          const CustomSectionSubHeading(
-            text: 'Get to know me :)',
+            text: '\nÀ propos de moi',
           ),
           Space.y1!,
           Row(
@@ -47,7 +44,7 @@ class AboutDesktop extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Who am I?',
+                        'Baptiste Nouailhac',
                         style: AppText.b1!.copyWith(
                           color: AppTheme.c!.primary,
                         ),
@@ -70,24 +67,80 @@ class AboutDesktop extends StatelessWidget {
                         ),
                         textAlign: TextAlign.justify,
                       ),
-                      Space.y!,
+                      Center(
+                        child: SizedBox(
+                          height: AppDimensions.normalize(25),
+                          width: AppDimensions.normalize(60),
+                          child: Row(
+                            children: StaticUtils.universityicon
+                                .asMap()
+                                .entries
+                                .map(
+                                  (e) => Padding(
+                                    padding: Responsive.isMobile(context)
+                                        ? Space.all(0.2, 0)
+                                        : Space.h!,
+                                    child: IconButton(
+                                      highlightColor: Colors.white54,
+                                      splashRadius: AppDimensions.normalize(12),
+                                      icon: Image.network(
+                                        e.value,
+                                        height: Responsive.isMobile(context)
+                                            ? AppDimensions.normalize(10)
+                                            : null,
+                                      ),
+                                      iconSize: Responsive.isMobile(context)
+                                          ? AppDimensions.normalize(16)
+                                          : AppDimensions.normalize(16),
+                                      onPressed: () => openURL(
+                                        StaticUtils.universityiconlinks[e.key],
+                                      ),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                      ),
                       Divider(
                         color: Colors.grey[800],
                         thickness: AppDimensions.normalize(0.5),
                       ),
                       Space.y!,
                       Text(
-                        'Technologies I have worked with:',
+                        'Technologies que je maitrise:',
                         style: AppText.l1!.copyWith(
                           color: AppTheme.c!.primary,
                         ),
                       ),
                       Space.y!,
                       Row(
-                        children: kTools
-                            .map((e) => ToolTechWidget(
-                                  techName: e,
-                                ))
+                        children: StaticUtils.ThecIcon
+                            .asMap()
+                            .entries
+                            .map(
+                              (e) => Padding(
+                                padding: Responsive.isMobile(context)
+                                    ? Space.all(0.2, 0)
+                                    : Space.h!,
+                                child: IconButton(
+                                  highlightColor: Colors.white54,
+                                  splashRadius: AppDimensions.normalize(12),
+                                  icon: Image.network(
+                                    e.value,
+                                    height: Responsive.isMobile(context)
+                                        ? AppDimensions.normalize(10)
+                                        : null,
+                                  ),
+                                  iconSize: Responsive.isMobile(context)
+                                      ? AppDimensions.normalize(9)
+                                      : AppDimensions.normalize(14),
+                                  onPressed: () => openURL(
+                                    StaticUtils.ThecIconLinks[e.key],
+                                  ),
+                                ),
+                              ),
+                            )
                             .toList(),
                       ),
                       Space.y!,
@@ -95,51 +148,60 @@ class AboutDesktop extends StatelessWidget {
                         color: Colors.grey[800],
                         thickness: AppDimensions.normalize(0.5),
                       ),
+                      Text(
+                        'J\'ai eu la chance de travailler avec:',
+                        style: AppText.l1!.copyWith(
+                          color: AppTheme.c!.primary,
+                        ),
+                      ),
+                      Space.y!,
                       Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              AboutMeData(
-                                data: "Name",
-                                information: "Muhammad Hamza",
+                        children: StaticUtils.CompanyIcon.asMap()
+                            .entries
+                            .map(
+                              (e) => Padding(
+                                padding: Responsive.isMobile(context)
+                                    ? Space.all(0.2, 0)
+                                    : Space.h!,
+                                child: IconButton(
+                                  highlightColor: Colors.white54,
+                                  splashRadius: AppDimensions.normalize(12),
+                                  icon: Image.network(
+                                    e.value,
+                                    height: Responsive.isMobile(context)
+                                        ? AppDimensions.normalize(10)
+                                        : null,
+                                  ),
+                                  iconSize: Responsive.isMobile(context)
+                                      ? AppDimensions.normalize(9)
+                                      : AppDimensions.normalize(14),
+                                  onPressed: () => openURL(
+                                    StaticUtils.CompanyIconLinks[e.key],
+                                  ),
+                                ),
                               ),
-                              AboutMeData(
-                                data: "Age",
-                                information: "24",
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              AboutMeData(
-                                data: "Email",
-                                information: "hamza.6.shakeel@gmail.com",
-                              ),
-                              AboutMeData(
-                                data: "From",
-                                information: "Attock, PK",
-                              ),
-                            ],
-                          ),
-                        ],
+                            )
+                            .toList(),
                       ),
                       Space.y1!,
-                      Row(
-                        children: [
-                          SizedBox(
-                            height: AppDimensions.normalize(13),
-                            width: AppDimensions.normalize(40),
-                            child: OutlinedButton(
-                              onPressed: () =>
-                                  html.window.open(StaticUtils.resume, 'pdf'),
-                              child: const Text(
-                                "Resume",
-                              ),
+                      Center(
+                        child: SizedBox(
+                          height: AppDimensions.normalize(25),
+                          width: AppDimensions.normalize(60),
+                          child: OutlinedButton(
+                            onPressed: () =>
+                                html.window.open(StaticUtils.resume, 'pdf'),
+                            child: const Text(
+                              "Mon CV",
                             ),
                           ),
+                        ),
+                      ),
+                      
+                      
+                      /*Row(
+                        children: [
+                          
                           Space.x1!,
                           Container(
                             color: Colors.grey[900]!,
@@ -157,14 +219,17 @@ class AboutDesktop extends StatelessWidget {
                                 ),
                               )
                         ],
-                      ),
+                      ),*/
                     ],
                   ),
                 ),
+                
               ),
+              
               Container(
                 width: width < 1230 ? width * 0.05 : width * 0.1,
               ),
+              
             ],
           )
         ],
