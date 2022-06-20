@@ -6,7 +6,7 @@ import 'package:folio/sections/portfolio/portfolio.dart';
 import 'package:folio/widget/footer.dart';
 
 class StaticUtils {
-  static const String hi = 'assets/hi.gif';
+  static const String hi = 'assets/photos/hi.gif';
 
   // photos
   static const String mobilePhoto = 'assets/photos/mobile.png';

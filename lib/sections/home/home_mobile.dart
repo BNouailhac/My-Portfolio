@@ -15,7 +15,7 @@ class HomeMobile extends StatelessWidget {
 
     return Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(image: AssetImage("hi.gif"), fit: BoxFit.cover),
+        image: DecorationImage(image: AssetImage(StaticUtils.hi), fit: BoxFit.cover),
       ),
       height: size.height * 1.025,
       padding: Space.h,
