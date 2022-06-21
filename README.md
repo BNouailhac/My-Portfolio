@@ -4,7 +4,7 @@ My own fully responsive Portfolio website developed in Flutter and deployed onli
 you can test the application online through this link : https://baptiste-nouailhac-portfolio.web.app
 ## Built-in feature
 - Complete animated Front fully responsive.
-- English and French language handled with easy_localization package
+- English and French language support with easy_localization package
 - Deployment with firebase hosting
 - CV download with firebase storage
 ## In app screenshoot
